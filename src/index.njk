@@ -6,6 +6,8 @@ layout: "layout"
 <header class="bit-root">
   <h1>{{ title }}</h1>
 
+  <h2>Jump to section</h2>
+
   <nav class="link-container bit-card">
     {% for name, section in kaomoji %}
     <a class="bit-link" href="#{{ name | lower }}">{{ name }}</a>
@@ -23,7 +25,11 @@ layout: "layout"
     </h2>
     <div class="button-container">
       {% for item in section %}
-      <button class="bit-button theme-kaomoji" aria-label="Copy to clipboard">
+      <button
+        class="bit-button theme-kaomoji"
+        aria-label="Copy to clipboard"
+        data-text="{{ item }}"
+      >
         {{ item }}
       </button>
       {% endfor %}
@@ -42,8 +48,17 @@ layout: "layout"
     class="bit-root theme-inverse"
     aria-label="Back to top"
     title="Back to top"
-    >&uarr;</a
   >
+    <svg
+      class="svg-icon"
+      width="48"
+      height="48"
+      viewBox="0 0 48 48"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M16,20  L24,12  L32,20  M24,12  L24,36" />
+    </svg>
+  </a>
 </nav>
 
 <footer>

@@ -9,7 +9,7 @@ addEventListener("click", (event) => {
   }
   abortController = new AbortController();
   const { signal } = abortController;
-  runPromise(copyText(event.target.textContent, { signal }));
+  runPromise(copyText(event.target.dataset.text, { signal }));
 });
 
 function runPromise(promise) {
