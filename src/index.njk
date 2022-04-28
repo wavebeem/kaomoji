@@ -4,11 +4,11 @@ layout: "layout"
 ---
 
 <header class="bit-root">
-  <h1>kaomoji</h1>
+  <h1>{{ title }}</h1>
 
-  <nav class="button-container bit-card">
-    {% for title, section in kaomoji %}
-    <a class="bit-link" href="#{{ title | lower }}">{{ title }}</a>
+  <nav class="link-container bit-card">
+    {% for name, section in kaomoji %}
+    <a class="bit-link" href="#{{ name | lower }}">{{ name }}</a>
     {% endfor %}
   </nav>
 </header>
@@ -16,9 +16,11 @@ layout: "layout"
 <main>
   <p>Click to copy a kaomoji to your clipboard.</p>
 
-  {% for title, section in kaomoji %}
-  <section id="{{ title | lower }}">
-    <h2>{{ title }}</h2>
+  {% for name, section in kaomoji %}
+  <section id="{{ name | lower }}">
+    <h2>
+      <a class="bit-link no-underline" href="#{{ name | lower }}">{{ name }}</a>
+    </h2>
     <div class="button-container">
       {% for item in section %}
       <button class="bit-button theme-kaomoji" aria-label="Copy to clipboard">

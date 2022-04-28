@@ -4,6 +4,10 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   /**
    * Setting font size on body rather than html so that 1rem can refer to the
@@ -26,12 +30,14 @@ h1 {
   margin: 0;
 }
 
-nav {
-  margin: 1rem 0;
+h2 {
+  margin: 0;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
 }
 
-footer {
-  text-align: center;
+nav {
+  margin: 1rem 0;
 }
 
 .bit-auto,
@@ -53,6 +59,12 @@ footer {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+}
+
+.link-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .theme-inverse {
@@ -82,6 +94,7 @@ footer {
 }
 
 .back-to-top > * {
+  z-index: 1;
   position: fixed;
   bottom: 1rem;
   right: 1rem;
@@ -105,13 +118,18 @@ footer {
 }
 
 .toast {
+  z-index: 2;
   position: fixed;
   bottom: 1rem;
   margin: 0;
-  left: 50vw;
-  transform: translateX(-50%);
+  left: 1rem;
+  max-width: calc(100vw - 6rem);
   padding: 0.5rem 1rem;
   border-radius: var(--bit-border-radius);
   pointer-events: none;
   box-shadow: 0 0 0 var(--bit-border-width) currentColor;
+}
+
+.no-underline {
+  text-decoration: none;
 }

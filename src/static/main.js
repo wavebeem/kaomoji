@@ -1,14 +1,15 @@
 let abortController = undefined;
 
 addEventListener("click", (event) => {
+  if (!(event.target instanceof HTMLButtonElement)) {
+    return;
+  }
   if (abortController) {
     abortController.abort();
   }
   abortController = new AbortController();
   const { signal } = abortController;
-  if (event.target instanceof HTMLButtonElement) {
-    runPromise(copyText(event.target.textContent, { signal }));
-  }
+  runPromise(copyText(event.target.textContent, { signal }));
 });
 
 function runPromise(promise) {
@@ -33,7 +34,7 @@ async function copyText(text, { signal }) {
   try {
     toast.hidden = false;
     await navigator.clipboard.writeText(text);
-    toast.textContent = "Copied to clipboard";
+    toast.textContent = `Copied ${text}`;
     await sleep(2000, { signal });
     toast.hidden = true;
   } catch (err) {
