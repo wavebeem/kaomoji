@@ -1,0 +1,2 @@
+# kaomoji
+Collection of kaomoji
