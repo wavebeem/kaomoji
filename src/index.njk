@@ -5,18 +5,24 @@ layout: "layout"
 
 <header class="bit-root">
   <h1>{{ title }}</h1>
+  <div>
+    &copy; {{ year }}
+    <a href="https://www.wavebeem.com" class="bit-link">Brian Mock</a>
+  </div>
 
   <h2>Jump to section</h2>
 
-  <nav class="link-container bit-card">
+  <nav class="link-container">
     {% for name, section in kaomoji %}
-    <a class="bit-link" href="#{{ name | lower }}">{{ name }}</a>
+    <a class="bit-button theme-kaomoji" href="#{{ name | lower }}">{{
+      name
+    }}</a>
     {% endfor %}
   </nav>
 </header>
 
 <main>
-  <p>Click to copy a kaomoji to your clipboard.</p>
+  <p class="bit-card">Click to copy a kaomoji to your clipboard.</p>
 
   {% for name, section in kaomoji %}
   <section id="{{ name | lower }}">
@@ -26,6 +32,7 @@ layout: "layout"
     <div class="button-container">
       {% for item in section %}
       <button
+        type="button"
         class="bit-button theme-kaomoji"
         aria-label="Copy to clipboard"
         data-text="{{ item }}"
@@ -61,7 +68,7 @@ layout: "layout"
   </a>
 </nav>
 
-<footer>
+<footer class="bit-card">
   &copy; {{ year }}
   <a href="https://www.wavebeem.com" class="bit-link">Brian Mock</a>
 </footer>
