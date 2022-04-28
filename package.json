@@ -1,0 +1,24 @@
+{
+  "name": "kaomoji",
+  "description": "Collection of kaomoji",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "eleventy --serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wavebeem/kaomoji.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wavebeem/kaomoji/issues"
+  },
+  "homepage": "https://github.com/wavebeem/kaomoji#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.1"
+  }
+}

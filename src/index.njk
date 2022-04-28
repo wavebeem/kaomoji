@@ -1,0 +1,50 @@
+---
+title: "Kaomoji"
+layout: "layout"
+---
+
+<header class="bit-root">
+  <h1>kaomoji</h1>
+
+  <nav class="button-container bit-card">
+    {% for title, section in kaomoji %}
+    <a class="bit-link" href="#{{ title | lower }}">{{ title }}</a>
+    {% endfor %}
+  </nav>
+</header>
+
+<main>
+  <p>Click to copy a kaomoji to your clipboard.</p>
+
+  {% for title, section in kaomoji %}
+  <section id="{{ title | lower }}">
+    <h2>{{ title }}</h2>
+    <div class="button-container">
+      {% for item in section %}
+      <button class="bit-button theme-kaomoji" aria-label="Copy to clipboard">
+        {{ item }}
+      </button>
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+</main>
+
+<div hidden role="alert" class="toast bit-root theme-inverse" id="toast">
+  Copied to clipboard
+</div>
+
+<nav class="back-to-top">
+  <a
+    href="#"
+    class="bit-root theme-inverse"
+    aria-label="Back to top"
+    title="Back to top"
+    >&uarr;</a
+  >
+</nav>
+
+<footer>
+  &copy; {{ year }}
+  <a href="https://www.wavebeem.com" class="bit-link">Brian Mock</a>
+</footer>

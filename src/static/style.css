@@ -1,0 +1,117 @@
+:root {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+  /**
+   * Setting font size on body rather than html so that 1rem can refer to the
+   * user's specified font size anywhere in my CSS, rather than 1.25 times that
+   * value; but this way most things get bumped up a little bigger, for a
+   * slightly comfier to read site (since this is a blog, after all)
+   */
+  font-size: 1.25rem;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin: 0;
+}
+
+nav {
+  margin: 1rem 0;
+}
+
+footer {
+  text-align: center;
+}
+
+.bit-auto,
+.bit-root {
+  --bit-border-radius: 3px;
+  --bit-color0: hsl(330, 50%, 25%);
+  --bit-color1: hsl(330, 50%, 90%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .bit-auto,
+  .bit-root {
+    --bit-color0: hsl(330, 50%, 90%);
+    --bit-color1: hsl(330, 50%, 25%);
+  }
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.theme-inverse {
+  --bit-color0: hsl(330, 50%, 90%);
+  --bit-color1: hsl(330, 50%, 25%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme-inverse {
+    --bit-color0: hsl(330, 50%, 25%);
+    --bit-color1: hsl(330, 50%, 90%);
+  }
+}
+
+.theme-kaomoji {
+  --bit-color0: hsl(330, 50%, 60%);
+  --bit-color1: hsl(330, 50%, 95%);
+  color: hsl(330, 50%, 25%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme-kaomoji {
+    --bit-color0: hsl(330, 50%, 70%);
+    --bit-color1: hsl(330, 50%, 30%);
+    color: hsl(330, 50%, 90%);
+  }
+}
+
+.back-to-top > * {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  text-decoration: none;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  line-height: 2rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 0 var(--bit-border-width) currentColor;
+}
+
+.back-to-top > *:active {
+  transform: translateY(1px);
+}
+
+.back-to-top > *:hover,
+.back-to-top > *:focus-visible {
+  outline: 2px solid var(--bit-color1);
+  outline-offset: 2px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 1rem;
+  margin: 0;
+  left: 50vw;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  border-radius: var(--bit-border-radius);
+  pointer-events: none;
+  box-shadow: 0 0 0 var(--bit-border-width) currentColor;
+}
