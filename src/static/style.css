@@ -2,6 +2,22 @@
   box-sizing: border-box;
 }
 
+:root {
+  --color-bg: hsl(330, 50%, 90%);
+  --color-fg: hsl(330, 50%, 25%);
+  --color-subtle-bg: hsl(330, 50%, 95%);
+  --color-subtle-fg: hsl(330, 50%, 60%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: hsl(330, 50%, 25%);
+    --color-fg: hsl(330, 50%, 90%);
+    --color-subtle-bg: hsl(330, 50%, 30%);
+    --color-subtle-fg: hsl(330, 50%, 70%);
+  }
+}
+
 body {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
@@ -37,17 +53,29 @@ nav {
 
 .bit-auto,
 .bit-root {
-  --bit-border-radius: 3px;
-  --bit-color0: hsl(330, 50%, 25%);
-  --bit-color1: hsl(330, 50%, 90%);
+  --bit-border-radius: 4px;
+  --bit-color0: var(--color-fg);
+  --bit-color1: var(--color-bg);
 }
 
-@media (prefers-color-scheme: dark) {
-  .bit-auto,
-  .bit-root {
-    --bit-color0: hsl(330, 50%, 90%);
-    --bit-color1: hsl(330, 50%, 25%);
-  }
+.theme-inverse {
+  --bit-color0: var(--color-bg);
+  --bit-color1: var(--color-fg);
+}
+
+.theme-kaomoji {
+  --bit-color0: var(--color-subtle-fg);
+  --bit-color1: var(--color-subtle-bg);
+  color: var(--color-fg);
+}
+
+.heading-hr {
+  margin-bottom: -1rem;
+  margin-top: 1rem;
+}
+
+.no-underline {
+  text-decoration: none;
 }
 
 .link-container,
@@ -57,35 +85,29 @@ nav {
   gap: 0.75rem;
 }
 
-.link-container > * {
+.link-button {
   text-decoration: none;
-  padding: 0.25rem 1rem;
+  box-shadow: none;
+  --bit-color0: var(--color-subtle-fg);
+  --bit-color1: var(--color-bg);
+  padding: 0.125rem 1rem;
+  border: var(--bit-border-width) solid var(--bit-color0);
+  color: inherit;
+  border-radius: var(--bit-border-radius);
 }
 
-.theme-inverse {
-  --bit-color0: hsl(330, 50%, 90%);
-  --bit-color1: hsl(330, 50%, 25%);
+.link-button:active {
+  transform: translateY(1px);
 }
 
-@media (prefers-color-scheme: dark) {
-  .theme-inverse {
-    --bit-color0: hsl(330, 50%, 25%);
-    --bit-color1: hsl(330, 50%, 90%);
-  }
+.link-button:hover {
+  --bit-color0: var(--color-subtle-fg);
+  --bit-color1: var(--color-subtle-bg);
 }
 
-.theme-kaomoji {
-  --bit-color0: hsl(330, 50%, 60%);
-  --bit-color1: hsl(330, 50%, 95%);
-  color: hsl(330, 50%, 25%);
-}
-
-@media (prefers-color-scheme: dark) {
-  .theme-kaomoji {
-    --bit-color0: hsl(330, 50%, 70%);
-    --bit-color1: hsl(330, 50%, 30%);
-    color: hsl(330, 50%, 90%);
-  }
+.link-button:focus {
+  outline: var(--bit-border-width) solid;
+  outline-offset: var(--bit-border-width);
 }
 
 .back-to-top > * {
@@ -129,8 +151,4 @@ nav {
   border-radius: var(--bit-border-radius);
   pointer-events: none;
   box-shadow: 0 0 0 var(--bit-border-width) currentColor;
-}
-
-.no-underline {
-  text-decoration: none;
 }
