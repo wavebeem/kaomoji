@@ -2,26 +2,44 @@
   box-sizing: border-box;
 }
 
-:root {
-  --color-bg: hsl(330, 50%, 90%);
-  --color-fg: hsl(330, 50%, 25%);
-  --color-subtle-bg: hsl(330, 50%, 95%);
-  --color-subtle-fg: hsl(330, 50%, 60%);
+.candy-root {
+  --candy-color-background1: hsl(330 50% 98%);
+  --candy-color-background2: hsl(330 50% 98%);
+  --candy-color-background3: hsl(330 50% 94%);
+  --candy-color-background4: hsl(330 50% 90%);
+  --candy-color-text1: hsl(330 50% 5%);
+  --candy-color-text2: hsl(330 50% 20%);
+  --candy-color-border1: hsl(330 50% 50%);
+  --candy-color-border2: hsl(330 50% 70%);
+  --candy-color-border3: hsl(330 50% 80%);
+  --candy-color-accent-background1: hsl(150 80% 20%);
+  --candy-color-accent-background2: hsl(150 80% 10%);
+  --candy-color-accent-border1: hsl(150 80% 80%);
+  --candy-color-accent-text1: hsl(150 80% 5%);
+  --candy-color-shadow1: hsl(330 50% 5% / 10%);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: hsl(330, 50%, 25%);
-    --color-fg: hsl(330, 50%, 90%);
-    --color-subtle-bg: hsl(330, 50%, 30%);
-    --color-subtle-fg: hsl(330, 50%, 70%);
+  .candy-root {
+    --candy-color-background1: hsl(330 50% 30%);
+    --candy-color-background2: hsl(330 50% 26%);
+    --candy-color-background3: hsl(330 50% 23%);
+    --candy-color-background4: hsl(330 50% 20%);
+    --candy-color-text1: hsl(330 50% 90%);
+    --candy-color-text2: hsl(330 50% 78%);
+    --candy-color-border1: hsl(330 50% 70%);
+    --candy-color-border2: hsl(330 50% 40%);
+    --candy-color-border3: hsl(330 50% 30%);
+    --candy-color-accent-background1: hsl(150 80% 50%);
+    --candy-color-accent-background2: hsl(150 80% 45%);
+    --candy-color-accent-border1: hsl(150 80% 80%);
+    --candy-color-accent-text1: hsl(150 80% 5%);
+    --candy-color-shadow1: hsl(330 50% 5% / 50%);
   }
 }
 
 body {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: system-ui, sans-serif;
   line-height: 1.5;
   margin: 0 auto;
   max-width: 800px;
@@ -29,12 +47,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-@media (min-width: 700px) {
-  body {
-    font-size: 1.25rem;
-  }
 }
 
 h1 {
@@ -48,25 +60,7 @@ h2 {
 }
 
 nav {
-  margin: 1rem 0;
-}
-
-.bit-auto,
-.bit-root {
-  --bit-border-radius: 4px;
-  --bit-color0: var(--color-fg);
-  --bit-color1: var(--color-bg);
-}
-
-.theme-inverse {
-  --bit-color0: var(--color-bg);
-  --bit-color1: var(--color-fg);
-}
-
-.theme-kaomoji {
-  --bit-color0: var(--color-subtle-fg);
-  --bit-color1: var(--color-subtle-bg);
-  color: var(--color-fg);
+  margin: 0;
 }
 
 .heading-hr {
@@ -74,7 +68,7 @@ nav {
   margin-top: 1rem;
 }
 
-.no-underline {
+.no-underline:not(:hover, :focus-visible) {
   text-decoration: none;
 }
 
@@ -85,70 +79,40 @@ nav {
   gap: 0.75rem;
 }
 
-.link-button {
+.quick-link {
+  flex: auto;
+  text-align: center;
+  border: 1px solid var(--candy-color-border2);
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
   text-decoration: none;
-  box-shadow: none;
-  --bit-color0: var(--color-subtle-fg);
-  --bit-color1: var(--color-bg);
-  padding: 0.125rem 1rem;
-  border: var(--bit-border-width) solid var(--bit-color0);
-  color: inherit;
-  border-radius: var(--bit-border-radius);
-}
-
-.link-button:active {
-  transform: translateY(1px);
-}
-
-.link-button:hover {
-  --bit-color0: var(--color-subtle-fg);
-  --bit-color1: var(--color-subtle-bg);
-}
-
-.link-button:focus {
-  outline: var(--bit-border-width) solid;
-  outline-offset: var(--bit-border-width);
 }
 
 .back-to-top > * {
-  --size: 3rem;
   z-index: 1;
+  aspect-ratio: 1 / 1;
   position: fixed;
   bottom: 1rem;
   right: 1rem;
   text-decoration: none;
-  width: var(--size);
-  height: var(--size);
+  width: max-content;
   text-align: center;
-  line-height: var(--size);
-  border-radius: var(--size);
+  line-height: 0;
+  border-radius: 9999px;
   fill: none;
   stroke: currentColor;
   stroke-width: 4px;
   stroke-linecap: round;
   stroke-linejoin: round;
-  box-shadow: 0 0 0 var(--bit-border-width) currentColor;
-}
-
-.back-to-top > *:active {
-  transform: translateY(1px);
-}
-
-.back-to-top > *:hover,
-.back-to-top > *:focus-visible {
-  outline: var(--bit-border-width) solid var(--bit-color1);
-  outline-offset: var(--bit-border-width);
 }
 
 .toast {
+  font-weight: bold;
   z-index: 2;
   position: fixed;
-  bottom: 1rem;
   margin: 0;
+  bottom: 1rem;
   left: 1rem;
-  max-width: calc(100vw - 6rem);
-  padding: 0.5rem 1rem;
-  border-radius: var(--bit-border-radius);
+  max-width: max-content;
   pointer-events: none;
-  box-shadow: 0 0 0 var(--bit-border-width) currentColor;
 }

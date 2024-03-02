@@ -3,41 +3,43 @@ title: "Kaomoji"
 layout: "layout"
 ---
 
-<header class="bit-root">
+<header>
   <h1>
-    <a href="#" class="bit-link no-underline">{{ title }}</a>
+    {{ title }}
   </h1>
-  <div>
-    &copy; {{ year }}
-    <a href="https://www.wavebeem.com" class="bit-link">Brian Mock</a>
-  </div>
 
-  <hr class="bit-hr heading-hr" role="presentation" />
+  <hr class="candy-divider" />
 
-  <h2>Navigate by section</h2>
+  <p>Navigate by section</p>
 
   <nav class="link-container">
     {% for name, section in kaomoji %}
-    <a class="link-button bit-root theme-kaomoji" href="#{{ name | lower }}">{{
-      name
-    }}</a>
+    <a
+      class="candy-link quick-link candy-focus candy-texture-concave"
+      href="#{{ name | lower }}"
+      >{{ name }}</a
+    >
     {% endfor %}
   </nav>
 </header>
 
 <main>
-  <p class="bit-card">Click to copy a kaomoji to your clipboard.</p>
+  <br />
+
+  <p class="candy-card">Click to copy a kaomoji to your clipboard.</p>
 
   {% for name, section in kaomoji %}
   <section id="{{ name | lower }}">
     <h2>
-      <a class="bit-link no-underline" href="#{{ name | lower }}">{{ name }}</a>
+      <a class="candy-link no-underline" href="#{{ name | lower }}">{{
+        name
+      }}</a>
     </h2>
     <div class="button-container">
       {% for item in section %}
       <button
         type="button"
-        class="bit-button theme-kaomoji"
+        class="candy-button"
         aria-label="Copy to clipboard"
         data-text="{{ item }}"
       >
@@ -49,14 +51,19 @@ layout: "layout"
   {% endfor %}
 </main>
 
-<div hidden role="alert" class="toast bit-root theme-inverse" id="toast">
+<div
+  hidden
+  role="alert"
+  class="toast candy-card candy-texture-smooth"
+  id="toast"
+>
   Copied to clipboard
 </div>
 
 <nav class="back-to-top">
   <a
     href="#"
-    class="bit-root theme-inverse"
+    class="candy-card candy-texture-striped"
     aria-label="Back to top"
     title="Back to top"
   >
@@ -72,7 +79,7 @@ layout: "layout"
   </a>
 </nav>
 
-<footer class="bit-card">
+<footer class="candy-well candy-texture-striped">
   &copy; {{ year }}
-  <a href="https://www.wavebeem.com" class="bit-link">Brian Mock</a>
+  <a href="https://www.wavebeem.com" class="candy-link">Sage Fennel</a>
 </footer>
